@@ -1,0 +1,24 @@
+local_backend: true
+
+backend:
+  name: proxy
+  proxy_url: "http://localhost:8081/api/v1"
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "posts"
+    label: "文章"
+    folder: "src/content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "slug", name: "slug", widget: "string", hint: "文章唯一标识，如：7" }
+      - { label: "描述", name: "description", widget: "text" }
+      - { label: "分类", name: "category", widget: "string" }
+      - { label: "发布日期", name: "publicationDate", widget: "datetime" }
+      - { label: "公开", name: "public", widget: "boolean", default: true }
+      - { label: "作者", name: "author", widget: "string", default: "外贸soho图哥" }
+      - { label: "正文", name: "body", widget: "markdown" }
