@@ -33,6 +33,10 @@ const { title = CONFIG.site_title, description = CONFIG.description, image = "/o
 		<PerformanceMonitor />
 	</body>
 	<script>
+		// Handle Netlify Identity invite/recovery redirects
+		if (window.location.hash && window.location.hash.includes('#invite_token=') || window.location.hash.includes('#recovery_token=')) {
+			window.netlifyIdentity.open();
+		}
 		// Register service worker for PWA
 		if ('serviceWorker' in navigator) {
 			window.addEventListener('load', () => {
